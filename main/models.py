@@ -14,7 +14,7 @@ class News(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=255)
     description = models.TextField()
-    price = models.IntegerField()
+    price = models.IntegerField(default=0)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='update')
     thumbnail = models.URLField(blank=True, null=True)
     product_views = models.PositiveIntegerField(default=0)
