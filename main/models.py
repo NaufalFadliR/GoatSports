@@ -3,20 +3,21 @@ from django.db import models
 
 class News(models.Model):
     CATEGORY_CHOICES = [
-        ('transfer', 'Transfer'),
-        ('update', 'Update'),
-        ('exclusive', 'Exclusive'),
-        ('match', 'Match'),
-        ('rumor', 'Rumor'),
-        ('analysis', 'Analysis'),
+        ('sepakbola', 'Sepakbola'),
+        ('basket', 'Basket'),
+        ('voli', 'Voli'),
+        ('padel', 'Padel'),
+        ('lari', 'Lari'),
+        ('bulutangkis', 'Bulutangkis'),
     ]
     
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
-    title = models.CharField(max_length=255)
-    content = models.TextField()
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    price = models.IntegerField()
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default='update')
     thumbnail = models.URLField(blank=True, null=True)
-    news_views = models.PositiveIntegerField(default=0)
+    product_views = models.PositiveIntegerField(default=0)
     created_at = models.DateTimeField(auto_now_add=True)
     is_featured = models.BooleanField(default=False)
     
