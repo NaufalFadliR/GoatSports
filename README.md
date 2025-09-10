@@ -1,0 +1,17 @@
+1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+= buat direktori kemudian aktifkan virtual environment. Setelah itu install dependencies yang dibutuhkan dilanjutkan dengan instalasi projek djangonya. Atur berkas .env dan .env.prod. Selanjutnya modifikasi file settings.py untuk menggunakan environment variables. pada settings.py tambahkan host pada ALLOWED_HOST, atur konfigurasi PRODUCTION dan ubah konfigurasi DATABASE. Selanjutnya migrasi database. Kemudian keluar dari virtual environment dan buat repo github untuk projek kita. Lacak perubahan file pada direktori projek dengan melakukan git init. Tambahnkan berkas .gitignore. hubungkan direktori lokal dengan repo github dan buat branch utama master. lakukan add, commit, dan push. Lanjut dengan membuat aplikasi main dengan menjalankan command untuk membuat aplikasi main (python manage.py startapp main). tambahkan main kedalam INSTALLED_APPS pada settings.py. Lanjut untuk membuat template, buat direktori template pada direktori aplikasi main yang berisi berkas main.html. lanjut lakukan implementasi model dengan mengubah models.py pada direktori aplikasi main. lakukan migrasi model.hubungkan views.py dengan main.html(template) dengan menambah baris import serta fungsi show_main pada views.py. Ubah nama dan kelas menjadi struktur kode Django pada main.html. Sleanjutnya konfigurasi routing pada main dan proyek  dengan menambahkan urls.py pada direktori main dan direktori utama(GoatSport). Deploy ke PWS dengan create new project, kemudian edit environ sesuai dgn isi file dari .env.prod.. tambahkan ALLOWED_HOSTS berupa url deployment. Jalankan command yang ada pada project command. jika sudah maka push ke pws. buat README.md kemudian tambahkan ke direktori utama.
+
+2. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html.
+= urls.py berisi url yang akan dicocokkan dengan input client, jika cocok akan  ditampilkan view.py pada aplikasi yang cocok. view.py akan mengambil atau meproses data dari model jika diperlukan. view.py kemudian akan ditampilkan kepada pengguna melalui template
+
+3. Jelaskan peran settings.py dalam proyek Django!
+= settings.py berperan untuk mengatur konfigurasi pada proyek django kita, mulai dari database, host, installed apps, dll.
+
+4. Bagaimana cara kerja migrasi database di Django?
+= dengan menciptakan berkas migrasi yang berisi perubahan model yang belum diaplikasikan ke dalam basis data, kemudian mengaplikasikan perubahan model yang tercantum dalam berkas migrasi ke basis data dengan menjalankan perintah sebelumnya.
+
+5. Menurut Anda, dari semua framework yang ada, mengapa framework Django dijadikan permulaan pembelajaran pengembangan perangkat lunak?
+= karena django menggunakan python yang notabene adlaah bahasa pemrograman yang cukup mudah untuk dipahami. Komunitas yang besar juga akan sangat membantu kita dalam mempelajari django untuk pengembangan perangkat lunak
+
+6. Apakah ada feedback untuk asisten dosen tutorial 1 yang telah kamu kerjakan sebelumnya?
+= Sejauh ini tidak, asdos sangat membantu dalam mengatasi masalah saat tutorial.
