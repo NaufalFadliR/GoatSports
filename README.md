@@ -1,6 +1,6 @@
 Link PWS = https://naufal-fadli41-goatsports.pbp.cs.ui.ac.id/
 
-Tugas 1 Individu
+TUGAS INDIVIDU 2
 
 1. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
 = buat direktori kemudian aktifkan virtual environment. Setelah itu install dependencies yang dibutuhkan dilanjutkan dengan instalasi projek djangonya. Atur berkas .env dan .env.prod. Selanjutnya modifikasi file settings.py untuk menggunakan environment variables. pada settings.py tambahkan host pada ALLOWED_HOST, atur konfigurasi PRODUCTION dan ubah konfigurasi DATABASE. Selanjutnya migrasi database. Kemudian keluar dari virtual environment dan buat repo github untuk projek kita. Lacak perubahan file pada direktori projek dengan melakukan git init. Tambahnkan berkas .gitignore. hubungkan direktori lokal dengan repo github dan buat branch utama master. lakukan add, commit, dan push. Lanjut dengan membuat aplikasi main dengan menjalankan command untuk membuat aplikasi main (python manage.py startapp main). tambahkan main kedalam INSTALLED_APPS pada settings.py. Lanjut untuk membuat template, buat direktori template pada direktori aplikasi main yang berisi berkas main.html. lanjut lakukan implementasi model dengan mengubah models.py pada direktori aplikasi main. lakukan migrasi model.hubungkan views.py dengan main.html(template) dengan menambah baris import serta fungsi show_main pada views.py. Ubah nama dan kelas menjadi struktur kode Django pada main.html. Sleanjutnya konfigurasi routing pada main dan proyek  dengan menambahkan urls.py pada direktori main dan direktori utama(GoatSport). Deploy ke PWS dengan create new project, kemudian edit environ sesuai dgn isi file dari .env.prod.. tambahkan ALLOWED_HOSTS berupa url deployment. Jalankan command yang ada pada project command. jika sudah maka push ke pws. buat README.md kemudian tambahkan ke direktori utama.
@@ -22,7 +22,8 @@ urls.py berisi url yang akan dicocokkan dengan input client, jika cocok akan  di
 = Sejauh ini tidak, asdos sangat membantu dalam mengatasi masalah saat tutorial.
 
 
-Tugas 2 Individu
+TUGAS INDIVIDU 3
+
 1. Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?
 = data delivery penting dalam sebuah platform agar kita dapat mendistribusikan data dari satu lokasi dengan akurat, konsisten, dan lebih efisien ke lokasi yang lain.
 
@@ -46,3 +47,37 @@ Screenshot postman :
 <img width="2591" height="987" alt="Cuplikan layar 2025-09-17 085432" src="https://github.com/user-attachments/assets/d97c9559-2203-4304-8b8b-a3a318bd77ea" />
 <img width="2597" height="1083" alt="Cuplikan layar 2025-09-17 085123" src="https://github.com/user-attachments/assets/291493f2-fed0-4434-bb60-4412f27c8d35" />
 <img width="2601" height="1005" alt="Cuplikan layar 2025-09-17 085103" src="https://github.com/user-attachments/assets/4a9c1ef5-0cd0-4fae-b6fe-69357ecafd14" />
+
+
+TUGAS INDIVIDU 4
+
+1. Apa itu Django AuthenticationForm? Jelaskan juga kelebihan dan kekurangannya.
+= merupakan form autentikasi bawaan dari Django yang mempunyai fungsi untuk melakukan proses autentikasi login pengguna. Kelebihannya adalah kita cukup memakai form bawaan ini tanpa perlu melakukan implementasi ulang kode untuk autentikasi login pengguna dan terintegrasi langsung dengan sistem session dan user Django., sehingga kode lebih efisien dan ringkas. Kekurangannya adalah opsi untuk melakukan login hanya terbats pada username dan password user, Kurang fleksibel untuk multi-factor authentication seperti kode OTP dan Captcha.
+
+2. Apa perbedaan antara autentikasi dan otorisasi? Bagaiamana Django mengimplementasikan kedua konsep tersebut?
+= Autentikasi adalah tahapan dalam memverifikasi identitas seseorang apakah sesuai atau tidak. Otorisasi adalah tahapan menentukan hak akses yang dimiliki oleh suatu user. Implementasi autentikasi dilakukan dengan AuthenticationForm serta django.contrib.auth import login dan logout. Implementasi otorisasi dapat menggunakan decorator @login_required atau bisa juga dengan @permission_required('app_name.change_model').
+
+3. Apa saja kelebihan dan kekurangan session dan cookies dalam konteks menyimpan state di aplikasi web?
+= Session 
+- Kelebihan = Lebih aman untuk data sensitif karrena data disimpan pada server, lebih fleksibel karena bisa menyimpan daat kompleks.
+- Kekurangan = Membebani kinerja server, akan expired apabila browser ditutup
+
+Cookies 
+- Kelebihan = Mudah diakses oleh client, tidak membebani server karena data disimpan pada browser user, bisa dilakukan set agar expirednya lama.
+- Kekurangan = Kapasitas terbatas, rentan terhadap XSS.
+
+4. Apakah penggunaan cookies aman secara default dalam pengembangan web, atau apakah ada risiko potensial yang harus diwaspadai? Bagaimana Django menangani hal tersebut?
+= Secara default tidak, karena ada resiko potensial berupa XSS, hal ini bisa diatasi jika kita memberikan atribut HttpOnly. Ada juga CSRF yang dapat diatasi dengan CSRF token yang dapat digunakan di form POST.
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+= Untuk fitur register, pada views.py Import UserCreationForm dan messages, Tambah fungsi register. Pada direktori main/templates tambah berkas register.html. Pada urls.py lakukan import fungsi register dan tambah path urlnya. 
+
+Untuk fitur login, pada views.py Import authenticate, login, dan AuthenticationForm, kemudian tambah fungsi login_user. Pada direktori main/templates tambah berkas login.html. Pada urls.py lakukan import fungsi login_user dan tambah path urlnya. 
+
+Untuk fitur logout, pada views.py Import logout, kemudian tambah fungsi logout_user. Pada direktori main/templates tambah berkas login.html. Pada urls.py lakukan import fungsi logout_user dan tambah path urlnya.
+
+Untuk merestriksi akses ke halaman main dan product detail, import login_required pada views.py. Tambahkan potongan kode @login_required(login_url='/login') untuk mengaplikasikan decorator login_required, diatas fungsi show_main dan juga show_news.
+
+Untuk mengakses data dari cookie, Tambahkan import HttpResponseRedirect, reverse, dan datetime pada views.py. Modifikasi fungsi login_user agar bisa menyimpan cookie last_login. Pada fungsi show_main, lakukan penambahan kode 'last_login'. Pada fungsi logout_user, lakukan penambahan kode untuk menghapus cookie last_login. Pindah ke main.html pada main/templates dan lakukan penambahan kode untuk menampilkan waktu terakhir login.
+
+Untuk menghubungkan model news dengan user, import user pada models.pydan tambahkan kode "user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)". Lanjutkan dengan melakukan migrate model. Pindah ke views.py pada main, modifikasi kode yang ada pada fungsi create_product. Lakukan juga modifikasi kode pada fungsi show_main. Pindah ke main.html di main/templates dan tambahkan tombol filter My dan All. Pindah ke product_detail.html di main/templates kemudian tambahkan kode untuk menampilkan nama seller(penjual). Kemudian buat 2 akun pengguna (saya pilih adidas dan nike) dengan masing-masing 3 dummy data.
