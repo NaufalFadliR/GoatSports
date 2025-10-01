@@ -81,3 +81,32 @@ Untuk merestriksi akses ke halaman main dan product detail, import login_require
 Untuk mengakses data dari cookie, Tambahkan import HttpResponseRedirect, reverse, dan datetime pada views.py. Modifikasi fungsi login_user agar bisa menyimpan cookie last_login. Pada fungsi show_main, lakukan penambahan kode 'last_login'. Pada fungsi logout_user, lakukan penambahan kode untuk menghapus cookie last_login. Pindah ke main.html pada main/templates dan lakukan penambahan kode untuk menampilkan waktu terakhir login.
 
 Untuk menghubungkan model news dengan user, import user pada models.pydan tambahkan kode "user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)". Lanjutkan dengan melakukan migrate model. Pindah ke views.py pada main, modifikasi kode yang ada pada fungsi create_product. Lakukan juga modifikasi kode pada fungsi show_main. Pindah ke main.html di main/templates dan tambahkan tombol filter My dan All. Pindah ke product_detail.html di main/templates kemudian tambahkan kode untuk menampilkan nama seller(penjual). Kemudian buat 2 akun pengguna (saya pilih adidas dan nike) dengan masing-masing 3 dummy data.
+
+
+TUGAS INDIVIDU 5
+
+1. Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+= Jika terdapat beberapa CSS selector untuk suatu elemen HTML, maka style yang akan diterapkan adalah yang memiliki prioritas yang lebih tinggi. Urutan dari CSS selector yang memiliki prioritas paling tinggi adalah sebagai berikut : Inline styles, ID selectors, Classes selector, Element selector.
+
+
+2. Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design, serta jelaskan mengapa!
+= Responsive design penting karena pengguna dapat mengakses web kita dari berbagai device. Tanpa responsive design, design web kita akan berantakan ketika dibuka dari device lain. Contoh dari web yang sudah menerapkan responsive design adalah web steam dimana hal ini membuat user dapat melakukan pembelian game di steam tanpa perlu mengakses komputer/laptop, tapi bisa lewat handphone, tablet, atau steamdeck. Contoh web yang tidak menerapkan responsive design adalah web yang dikelola pemerintah. Hal ini karena umumnya website yang dikelola pemerintah ini sudah ada sejak lama dan enggan dilakukan pembaruan karna dirasa kurang penting.
+
+3. Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+= Padding merupakan area kosong(transparan) yang menjadi jarak antara konten elemen dengan border. Border merupakan garis tepian yang membungkus konten dan juga padding. Margin merupakan area kosong(transparan) yang menjadi jarak antara bagian konten dengan border. Contoh pengaplikasiannya : 
+div {
+  width: 300px;
+  border: 15px solid green;
+  padding: 50px;
+  margin: 20px;
+}
+
+4. Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+=Flexbox adalah layout method untuk mengatur item dalam satu dimensi (baris atau kolom). Kegunaannya adalah untuk menyusun item agar rata tengah (horizontal & vertical alignment), membuat layout responsif sederhana, membagi ruang antar elemen.
+
+Grid Layout adalah layout method untuk mengatur item dalam dua dimensi (baris dan kolom). Kegunaannya adalah untuk mendesain halaman kompleks (header, sidebar, main, footer)dan membagi halaman ke dalam area grid yang rapi.
+
+5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+= Karena saya menggunakan tailwind, lakukan penambahan tailwind ke aplikasi dengan menggunakan CDN dari tailwind. Untuk fitur edit dan delete product, lakukan penambahan fungsi edit_product dan delete_product pada  views.py. Kemudian buat berkas baru edit_news.html pada main/templates. Lanjutkan dengan mengimport kedua fungsi tersebut ke urls.py dan tambahkan pathnya masing-masing. Selanjutnya imlementasi fitur navigation bar dengan membuat berkas baru bernama navbar.html di folder templates/ pada root direktori dan tautkan ke dalam main.html di direktori main/templates/ dengan tag include. Tahap selanjutnya adalah mengonfigurasi static files pada settings.py di direktori goat_sports/ dengan menambahkan middleware dan mengonfigurasi  variabel STATIC_ROOT, STATICFILES_DIRS, dan STATIC_URL. Tahap selanjutnya adalah styling aplikasi. Pertama buat file global.css di direktori static/css/, hubungkan global.css dan script Tailwind ke base.html, tambahkan custom styling ke global.css. Setelah itu lakukan modifikasi styling pada navbar.html, login.html, register.html, product_detail.html, create_product.html, edit_product.html. Buat file baru card_product.html untuk mengimplementasikan elemen card untuk product.
+
+
