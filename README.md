@@ -22,6 +22,7 @@ urls.py berisi url yang akan dicocokkan dengan input client, jika cocok akan  di
 = Sejauh ini tidak, asdos sangat membantu dalam mengatasi masalah saat tutorial.
 
 
+================================================================================
 TUGAS INDIVIDU 3
 
 1. Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?
@@ -49,6 +50,7 @@ Screenshot postman :
 <img width="2601" height="1005" alt="Cuplikan layar 2025-09-17 085103" src="https://github.com/user-attachments/assets/4a9c1ef5-0cd0-4fae-b6fe-69357ecafd14" />
 
 
+================================================================================
 TUGAS INDIVIDU 4
 
 1. Apa itu Django AuthenticationForm? Jelaskan juga kelebihan dan kekurangannya.
@@ -83,6 +85,7 @@ Untuk mengakses data dari cookie, Tambahkan import HttpResponseRedirect, reverse
 Untuk menghubungkan model news dengan user, import user pada models.pydan tambahkan kode "user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)". Lanjutkan dengan melakukan migrate model. Pindah ke views.py pada main, modifikasi kode yang ada pada fungsi create_product. Lakukan juga modifikasi kode pada fungsi show_main. Pindah ke main.html di main/templates dan tambahkan tombol filter My dan All. Pindah ke product_detail.html di main/templates kemudian tambahkan kode untuk menampilkan nama seller(penjual). Kemudian buat 2 akun pengguna (saya pilih adidas dan nike) dengan masing-masing 3 dummy data.
 
 
+================================================================================
 TUGAS INDIVIDU 5
 
 1. Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
@@ -110,3 +113,20 @@ Grid Layout adalah layout method untuk mengatur item dalam dua dimensi (baris da
 = Karena saya menggunakan tailwind, lakukan penambahan tailwind ke aplikasi dengan menggunakan CDN dari tailwind. Untuk fitur edit dan delete product, lakukan penambahan fungsi edit_product dan delete_product pada  views.py. Kemudian buat berkas baru edit_news.html pada main/templates. Lanjutkan dengan mengimport kedua fungsi tersebut ke urls.py dan tambahkan pathnya masing-masing. Selanjutnya imlementasi fitur navigation bar dengan membuat berkas baru bernama navbar.html di folder templates/ pada root direktori dan tautkan ke dalam main.html di direktori main/templates/ dengan tag include. Tahap selanjutnya adalah mengonfigurasi static files pada settings.py di direktori goat_sports/ dengan menambahkan middleware dan mengonfigurasi  variabel STATIC_ROOT, STATICFILES_DIRS, dan STATIC_URL. Tahap selanjutnya adalah styling aplikasi. Pertama buat file global.css di direktori static/css/, hubungkan global.css dan script Tailwind ke base.html, tambahkan custom styling ke global.css. Setelah itu lakukan modifikasi styling pada navbar.html, login.html, register.html, product_detail.html, create_product.html, edit_product.html. Buat file baru card_product.html untuk mengimplementasikan elemen card untuk product.
 
 
+===============================================================================
+TUGAS INDIVIDU 6
+
+Apa perbedaan antara synchronous request dan asynchronous request?
+= Synchronous request akan membuat halaman akan reload / UI berhenti sampai server memberikan respons yang sesuai dengan request. Sedangkan asynchronous request hanya melakukan update pada data yang dibutuhkan yang diambil dan di-update secara dinamis, tanpa reload halaman penuh.
+
+Bagaimana AJAX bekerja di Django (alur request–response)?
+= AJAX bekerja dengan cara mengirim permintaan HTTP menggunakan JavaScript (biasanya melalui fetch() atau XMLHttpRequest) ke endpoint Django, seperti URL yang didefinisikan pada views.py. Ketika AJAX request dikirim, Django memprosesnya di sisi server melalui view yang sesuai dan kemudian mengembalikan data dalam format JSON sebagai respon. JavaScript di sisi klien kemudian memproses respon tersebut untuk memperbarui bagian tertentu dari halaman secara dinamis tanpa melakukan full reload. Dengan demikian, jika kita gambarkan alur request–response AJAX akan terlihat seperti ini event pengguna di sisi klien --> JavaScript mengirim permintaan ke server --> Django memproses dan mengembalikan JSON --> JavaScript memperbarui tampilan di browser tanpa perlu meroal keseluruhan halaman.
+
+Apa keuntungan menggunakan AJAX dibandingkan render biasa di Django?
+= Keuntungan menggunakan AJAX adalah efisiensi dan interaktivitas yang lebih tinggi. AJAX hanya melakukan pembaruan pada sebagian halaman tanpa memuat ulang seluruh halaman, sehingga menghemat waktu, bandwidth, dan memberikan pengalaman yang lebih cepat dan responsif bagi pengguna. Misalnya, pada fitur menambahkan data ke tabel atau menghapus entri, AJAX dapat langsung memperbarui tampilan tabel tanpa melakukan reload halaman.
+
+Bagaimana cara memastikan keamanan saat menggunakan AJAX untuk fitur Login dan Register di Django?
+= Untuk keamanan dalam penggunaan AJAX terutama pada fitur Login dan Register, kita dapat menggunakan mekanisme CSRF (Cross-Site Request Forgery) protection yang disediakan oleh Django. Token CSRF harus disertakan pada setiap request POST untuk memastikan bahwa request memang berasal dari sumber yang sah/valid. Django secara default menyediakan {% csrf_token %} dalam form HTML dan juga memungkinkan pengiriman token ini melalui header dalam permintaan AJAX.
+
+Bagaimana AJAX mempengaruhi pengalaman pengguna (User Experience) pada website?
+= Penggunaan AJAX memiliki dampak positif besar terhadap User Experience (UX). Karena AJAX memungkinkan interaksi yang cepat dan tanpa distrupsi akibat reload halaman, pengguna merasakan aplikasi web yang lebih halus dan mirip dengan aplikasi desktop. Respon yang instan ini dapat membuat website terasa lebih modern, efisien, dan mudah digunakan, sehingga meningkatkan kepuasan dan keterlibatan pengguna.
